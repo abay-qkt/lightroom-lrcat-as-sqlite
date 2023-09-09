@@ -109,18 +109,8 @@ select
     dateDay,    
     focalLength,
     aperture,
-    CASE 
-        WHEN ROUND(POWER(2, aperture/2), 1) * 10 % 10 = 0
-        THEN 'F' || CAST(CAST(ROUND(POWER(2, aperture/2), 0) AS INTEGER) AS TEXT)
-        ELSE 'F' || CAST(ROUND(POWER(2, aperture/2), 1) AS TEXT)
-    END AS fNumber,
     isoSpeedRating,
     shutterSpeed,
-    CASE 
-        WHEN POWER(2, shutterSpeed) > 1 
-        THEN '1/' || CAST(CAST(ROUND(POWER(2, shutterSpeed), 0) AS INTEGER) AS TEXT)
-        ELSE CAST(CAST(ROUND(1 / POWER(2, shutterSpeed), 0) AS INTEGER) AS TEXT)
-    END AS exposureTime,
     gpsLatitude,
     gpsLongitude,
     gpsSequence,
